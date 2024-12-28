@@ -1,0 +1,30 @@
+This example uses Apache HTTP Server.
+
+Connect to your instance. If you need help, see Connecting to Your Instance.
+Run yum update:
+
+sudo yum -y update
+Install the Apache HTTP Server:
+
+sudo yum -y install httpd
+Allow Apache (HTTP and HTTPS) through the firewall:
+
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+
+
+Reload the firewall:
+
+sudo firewall-cmd --reload
+Start the web server:
+
+sudo systemctl start httpd
+Add an index.htm file on each server that indicates which server it is, for example:
+On Webserver 1:
+
+sudo su
+echo 'WebServer1' >/var/www/html/index.html
+On Webserver 2:
+
+sudo su
+echo 'WebServer2' >/var/www/html/index.html
